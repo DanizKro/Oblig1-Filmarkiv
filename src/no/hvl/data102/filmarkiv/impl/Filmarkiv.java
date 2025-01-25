@@ -5,16 +5,13 @@ import no.hvl.data102.filmarkiv.adt.FilmarkivADT;
 public class Filmarkiv implements FilmarkivADT {
 
 	Film[] filmarkiv;
+
 	private int antall;
 
 	public Filmarkiv(int storrelse) {
 		filmarkiv = new Film[storrelse];
 		antall = 0;
 
-	}
-	
-	public int getAntall() {
-		return antall;
 	}
 
 	@Override
@@ -92,7 +89,7 @@ public class Filmarkiv implements FilmarkivADT {
 		// lager en ny tabell som er akkuratt stor nok til å ta imot alle med samme
 		// produsent
 		Film[] sjangerTab = new Film[teller];
-		
+
 		int index = 0;
 
 		// kopierer inn alle objektene med samme produsent i ny tabell
@@ -106,7 +103,7 @@ public class Filmarkiv implements FilmarkivADT {
 	}
 
 	@Override
-	public int antall(Sjanger sjanger) {
+	public int antallSjanger(Sjanger sjanger) {
 
 		int teller = 0;
 
@@ -118,10 +115,17 @@ public class Filmarkiv implements FilmarkivADT {
 		return teller;
 	}
 
-	@Override
-	public int antall() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getAntall() {
+		return antall;
+	}
+
+	public Film[] hentFilmTabell() {
+
+		Film[] result = new Film[antall];
+		for (int i = 0; i < antall; i++) {
+			result[i] = filmarkiv[i];
+		}
+		return result;
 	}
 
 	public void utvid(Film[] film) {
@@ -135,6 +139,17 @@ public class Filmarkiv implements FilmarkivADT {
 			filmarkiv = temp;
 		}
 
+	}
+
+	private Film[] trimTab(Film[] tab, int n) {
+		// n er antall elementer
+		Film[] nytab = new Film[n];
+		int i = 0;
+		while (i < n) {
+			nytab[i] = tab[i];
+			i++;
+		}
+		return nytab;
 	}
 
 }
