@@ -87,7 +87,6 @@ public class Filmarkiv implements FilmarkivADT {
 			}
 		}
 		// lager en ny tabell som er akkuratt stor nok til å ta imot alle med samme
-		// produsent
 		Film[] sjangerTab = new Film[teller];
 
 		int index = 0;

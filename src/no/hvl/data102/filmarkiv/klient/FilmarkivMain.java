@@ -63,6 +63,7 @@ public class FilmarkivMain {
 				printFil(arkiv, "/Users/dkron/Documents/GitHub/Oblig1-Filmarkiv/src/no/hvl/data102/filmarkiv/klient/Filmarkiv.txt");
 				avslutt = true;
 				System.out.println("Avslutter programmet. Ha en fin dag!");
+				scanner.close();
 				break;
 
 			default:
@@ -73,17 +74,17 @@ public class FilmarkivMain {
 
 
 //		//--------------------------------------------------------------------------------
-//		// Opprett et nytt Filmarkiv og fyll det med filmer fra fil
-//		Filmarkiv arkiv = new Filmarkiv(50);
-//		Film[] filmer = lesInnFraFil("/Users/dkron/Documents/GitHub/Oblig1-Filmarkiv/src/no/hvl/data102/filmarkiv/klient/Filmarkiv.txt");
+//		
+//		//Testkode for opplasting av fil
+//		Filmarkiv arkivTo = new Filmarkiv(50);
+//		Film[] filmerTo = lesInnFraFil("/Users/dkron/Documents/GitHub/Oblig1-Filmarkiv/src/no/hvl/data102/filmarkiv/klient/Filmarkiv.txt");
 //
 //		for (Film film : filmer) {
 //			if (film != null) {
-//				arkiv.leggTilFilm(film); // Legg filmer inn i arkivet
+//				arkiv.leggTilFilm(film);
 //			}
 //		}
 //
-//		// Skriv ut filmene for å sjekke innholdet
 //		for (Film film : arkiv.hentFilmTabell()) {
 //			if (film != null) {
 //				System.out.println(film);
@@ -91,6 +92,10 @@ public class FilmarkivMain {
 //		}
 //		//--------------------------------------------------------------------------------
 
+		
+		
+		
+		
 	}
 
 	private static void skrivUt(Filmarkiv arkiv) {
@@ -162,16 +167,16 @@ public class FilmarkivMain {
 	// Skriver ut filmer fra innlest tabell til gitt plassering
 	public static void printFil(Filmarkiv arkiv, String filnavn) {
 		try {
-			// Sørg for at mappen eksisterer
+			
 			File dir = new File(filnavn).getParentFile();
 			if (!dir.exists()) {
-				dir.mkdirs(); // Opprett mappe hvis den ikke finnes
+				dir.mkdirs(); 
 			}
 
 			File nyFil = new File(filnavn);
 			PrintWriter skriv = new PrintWriter(nyFil);
 
-			// Hent filmer fra arkivet og skriv til fil
+			//Skriver ut filmer i dokumentet
 			Film[] filmer = arkiv.hentFilmTabell();
 			for (Film e : filmer) {
 				if (e != null) {

@@ -10,10 +10,9 @@ import no.hvl.data102.filmarkiv.impl.Sjanger;
 
 public class Tekstgrensesnitt {
 
-	// Leser inn opplysninger om en film fra tastatur og returnere et Film-objekt
 	public static Film lesFilm(){
 	
-		// public Film(int filmnr, String produsent, String tittel, int lansering, Sjanger sjanger, String filmselskap)
+		//Måten innput for film objekt er: public Film(int filmnr, String produsent, String tittel, int lansering, Sjanger sjanger, String filmselskap)
 		
 		Scanner scanner = new Scanner(System.in);
 
@@ -40,8 +39,8 @@ public class Tekstgrensesnitt {
             System.out.print("Oppgi filmselskap(String): ");
             String filmselskap = scanner.nextLine();
 
-          
-            // -scanner.close();
+            //Måtte ta vekk pga feil i kode for switch setningene - tillatet ikke neste loop i while løkken hvis scanner ble lukket.
+            //scanner.close();
             
             return new Film(filmnr, produsent, tittel, lansering, sjanger, filmselskap);
 
@@ -50,7 +49,7 @@ public class Tekstgrensesnitt {
         } catch (Exception e) {
             System.out.println("Det oppstod en feil: " + e.getMessage());
         }
-        return null; // Returner null hvis noe gikk galt
+        return null;
 	}
 	
 	
