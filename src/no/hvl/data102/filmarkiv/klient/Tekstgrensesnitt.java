@@ -56,6 +56,8 @@ public class Tekstgrensesnitt {
 	// TODO
 	// Skriver ut en film med alle opplysninger på skjerm (husk tekst for sjanger)	
 	public void skrivUtFilm(Film film) {
+			
+		System.out.print(film.toString());
 		
 	}
 	

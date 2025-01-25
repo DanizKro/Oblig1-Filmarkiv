@@ -62,12 +62,12 @@ public class FilmarkivMain {
 			case "0":
 				printFil(arkiv, "/Users/dkron/Documents/GitHub/Oblig1-Filmarkiv/src/no/hvl/data102/filmarkiv/klient/Filmarkiv.txt");
 				avslutt = true;
-				System.out.println("Avslutter programmet. Ha en fin dag!");
+				System.out.println("Lagret og avsluttet :)");
 				scanner.close();
 				break;
 
 			default:
-				System.out.println("Ugyldig valg. Prøv igjen.");
+				System.out.println("Ugyldig valg. Prøv igjen :)");
 				break;
 			}
 		}
