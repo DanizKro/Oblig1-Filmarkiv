@@ -56,6 +56,8 @@ public interface FilmarkivADT {
 	 * @return antall filmer i arkivet
 	 */
 	int getAntall();
+
+	Film[] hentFilmTabell();
 }
 
 

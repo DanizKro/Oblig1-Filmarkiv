@@ -1,9 +1,9 @@
 package no.hvl.data102.filmarkiv.klient;
 
 import java.util.Scanner;
-
 import no.hvl.data102.filmarkiv.adt.FilmarkivADT;
 import no.hvl.data102.filmarkiv.impl.Film;
+import no.hvl.data102.filmarkiv.impl.Filmarkiv;
 import no.hvl.data102.filmarkiv.impl.Sjanger;
 
 
@@ -56,15 +56,38 @@ public class Tekstgrensesnitt {
 	// TODO
 	// Skriver ut en film med alle opplysninger på skjerm (husk tekst for sjanger)	
 	public void skrivUtFilm(Film film) {
-			
-		System.out.print(film.toString());
+		
+		film.toString();
 		
 	}
-	
 	// TODO
 	// Skriver ut alle filmer med en spesiell delstreng i tittelen
 	public void skrivUtFilmDelstrengITittel(FilmarkivADT arkiv, String delstreng) {
 		
+		Film[] filmerMedDelstreng = arkiv.soekTittel(delstreng);
+	    
+	    // Sjekk om det finnes filmer og skriv ut dem
+	    if (filmerMedDelstreng != null && filmerMedDelstreng.length > 0) {
+	        System.out.println("Filmer som inneholder \"" + delstreng + "\" i tittelen:");
+	        for (Film film : filmerMedDelstreng) {
+	            if (film != null) {
+	                // Skriv ut filmens detaljer
+	                System.out.println(film);
+	            }
+	        }
+	    } else {
+	        System.out.println("Ingen filmer funnet med \"" + delstreng + "\" i tittelen.");
+	    }
+	
+		
+//		Film[] filmer = arkiv.soekTittel(delstreng);
+//		
+//		
+//		for (Film film : arkiv.hentFilmTabell()) {
+//			if (film != null) {
+//				System.out.println(film);
+//			}
+//		}
 		
 	}
 	// TODO

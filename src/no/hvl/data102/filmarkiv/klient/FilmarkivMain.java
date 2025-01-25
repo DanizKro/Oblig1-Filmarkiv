@@ -14,78 +14,106 @@ import no.hvl.data102.filmarkiv.impl.Sjanger;
 public class FilmarkivMain {
 
 	public static void main(String[] args) {
+		
+		//Chsatt laget kode for å teste skrivUtFilmDelstrengITittel() - Men fungerer ikke...
+		Filmarkiv arkiv = new Filmarkiv(50);  // Anta at du har lagt til filmer i arkivet
 
-		// Laster opp filmer fra tidligere dokument
+	    // Eksempel på hvordan du legger til filmer i arkivet
+	    arkiv.leggTilFilm(new Film(1, "Produsent1", "Star Wars", 1977, Sjanger.ACTION, "Lucasfilm"));
+	    arkiv.leggTilFilm(new Film(2, "Produsent2", "Star Trek", 1980, Sjanger.EVENTYR, "Paramount"));
+	    arkiv.leggTilFilm(new Film(3, "Produsent3", "Star Wars: Empire Strikes Back", 1980, Sjanger.ACTION, "Lucasfilm"));
 
-		Filmarkiv arkiv = new Filmarkiv(50);
-		Film[] filmer = lesInnFraFil(
-				"/Users/dkron/Documents/GitHub/Oblig1-Filmarkiv/src/no/hvl/data102/filmarkiv/klient/Filmarkiv.txt");
+	    // Lag et Tekstgrensesnitt-objekt
+	    Tekstgrensesnitt tg = new Tekstgrensesnitt();
 
-		for (Film film : filmer) {
-			if (film != null) {
-				arkiv.leggTilFilm(film); // Legg filmer inn i arkivet
-			}
-		}
+	    // Be brukeren om en delstreng de vil søke etter i tittelen
+	    Scanner scanner = new Scanner(System.in);
+	    System.out.println("Skriv inn del av tittel du ønsker å søke etter:");
+	    String delstreng = scanner.nextLine();
 
-		// Spør om du vil skrive ut filmer du har, eller om du vil legge til en ny fil
+	    // Kall på metoden skrivUtFilmDelstrengITittel
+	    tg.skrivUtFilmDelstrengITittel(arkiv, delstreng);
+	 
+	    
 
-		System.out.println("Velkommen til ditt filmarkiv! :)");
-
-		boolean avslutt = false;
-
-		while (!avslutt) {
-			System.out.println("Velg en av følgende alternativer:");
-			System.out.println("1: Print ut filmarkiv til skjermen");
-			System.out.println("2: Legg til ny film");
-			System.out.println("3: Slett film");
-			System.out.println("0: Lagre og avslutt");
-
-			Scanner scanner = new Scanner(System.in);
-			String valg = scanner.nextLine();
-
-			switch (valg) {
-			case "1":
-				skrivUt(arkiv);
-				break;
-
-			case "2":
-				arkiv.leggTilFilm(lesFilm());
-				break;
-
-			case "3":
-				System.out.println("Slett Filmnr: ");
-				int nr = scanner.nextInt();
-				scanner.nextLine();
-				arkiv.slettFilm(nr);
-				break;
-
-			case "0":
-				printFil(arkiv, "/Users/dkron/Documents/GitHub/Oblig1-Filmarkiv/src/no/hvl/data102/filmarkiv/klient/Filmarkiv.txt");
-				avslutt = true;
-				System.out.println("Lagret og avsluttet :)");
-				scanner.close();
-				break;
-
-			default:
-				System.out.println("Ugyldig valg. Prøv igjen :)");
-				break;
-			}
-		}
-
-
-//		//--------------------------------------------------------------------------------
-//		
-//		//Testkode for opplasting av fil
-//		Filmarkiv arkivTo = new Filmarkiv(50);
-//		Film[] filmerTo = lesInnFraFil("/Users/dkron/Documents/GitHub/Oblig1-Filmarkiv/src/no/hvl/data102/filmarkiv/klient/Filmarkiv.txt");
+	
+		
+		
+		
+////************************************************************************************************************************************
+//		// Laster opp filmer fra tidligere dokumenr
+//		Filmarkiv arkiv = new Filmarkiv(50);
+//		Film[] filmer = lesInnFraFil(
+//				"/Users/dkron/Documents/GitHub/Oblig1-Filmarkiv/src/no/hvl/data102/filmarkiv/klient/Filmarkiv.txt");
 //
 //		for (Film film : filmer) {
 //			if (film != null) {
-//				arkiv.leggTilFilm(film);
+//				arkiv.leggTilFilm(film); // Legg filmer inn i arkivet
 //			}
 //		}
 //
-//		for (Film film : arkiv.hentFilmTabell()) {
+//		// Spør om du vil skrive ut filmer du har, eller om du vil legge til en ny fil
+//
+//		System.out.println("Velkommen til ditt filmarkiv! :)");
+//
+//		boolean avslutt = false;
+//
+//		while (!avslutt) {
+//			System.out.println("Velg et av følgende alternativer:");
+//			System.out.println("1: Print ut film arkiv til skjermen");
+//			System.out.println("2: Legg til ny film");
+//			System.out.println("3: Slett film");
+//			System.out.println("0: Lagre og avslutt");
+//
+//			Scanner scanner = new Scanner(System.in);
+//			String valg = scanner.nextLine();
+//
+//			switch (valg) {
+//			case "1":
+//				skrivUt(arkiv);
+//				break;
+//
+//			case "2":
+//				arkiv.leggTilFilm(lesFilm());
+//				break;
+//
+//			case "3":
+//				System.out.println("Slett Filmnr: ");
+//				int nr = scanner.nextInt();
+//				scanner.nextLine();
+//				arkiv.slettFilm(nr);
+//				break;
+//
+//			case "0":
+//				printFil(arkiv, "/Users/dkron/Documents/GitHub/Oblig1-Filmarkiv/src/no/hvl/data102/filmarkiv/klient/Filmarkiv.txt");
+//				avslutt = true;
+//				System.out.println("Lagret og avsluttet :)");
+//				scanner.close();
+//				break;
+//
+//			default:
+//				System.out.println("Ugyldig valg. Prøv igjen :)");
+//				break;
+//			}
+//		}
+//		//************************************************************************************************************************************
+		
+		
+
+		//--------------------------------------------------------------------------------
+		
+//		//Testkode for opplasting av fil
+//		Filmarkiv arkivTo = new Filmarkiv(50);
+//		
+//		Film[] filmerTo = lesInnFraFil("/Users/dkron/Documents/GitHub/Oblig1-Filmarkiv/src/no/hvl/data102/filmarkiv/klient/Filmarkiv.txt");
+//
+//		for (Film film : filmerTo) {
+//			if (film != null) {
+//				arkivTo.leggTilFilm(film);
+//			}
+//		}
+//
+//		for (Film film : arkivTo.hentFilmTabell()) {
 //			if (film != null) {
 //				System.out.println(film);
 //			}
