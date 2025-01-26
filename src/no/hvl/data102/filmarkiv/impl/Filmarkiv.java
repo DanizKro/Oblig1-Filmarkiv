@@ -1,5 +1,8 @@
 package no.hvl.data102.filmarkiv.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import no.hvl.data102.filmarkiv.adt.FilmarkivADT;
 
 public class Filmarkiv implements FilmarkivADT {
@@ -52,54 +55,34 @@ public class Filmarkiv implements FilmarkivADT {
 	@Override
 	public Film[] soekTittel(String delstreng) {
 		
-		// Fått en del hjelp fra chatt for ny kode som fungerer i FilmarkivMain
+		// Den 'beste' løsningen ved å bruke en dynamisk liste (filmer)
+		List<Film> filmer = new ArrayList<>();
+		for (int i = 0; i < antall; i++) {
+			if (filmarkiv[i].getTittel().toLowerCase().contains(delstreng.toLowerCase())) {
+				filmer.add(filmarkiv[i]);
+			}
+		}
+		return filmer.toArray(new Film[0]);
 		
-	    int antallFunnet = 0;
-	    
-	    // Gå gjennom alle filmer i arkivet og tell hvor mange som matcher
-	    for (Film e : filmarkiv) {
-	        if (e != null && e.getTittel().toLowerCase().contains(delstreng.toLowerCase())) {
-	            antallFunnet++;
-	        }
-	    }
-	    
-	    // Nå lager vi et array for de filmene som faktisk matcher
-	    Film[] funnetFilmer = new Film[antallFunnet];
-	    int index = 0;
-	    
-	    // Gå gjennom filmene en gang til og legg de som samsvarer til arrayet
-	    for (Film e : filmarkiv) {
-	        if (e != null && e.getTittel().toLowerCase().contains(delstreng.toLowerCase())) {
-	            funnetFilmer[index] = e;
-	            index++;
-	        }
-	    }
-	    
-	    return funnetFilmer;
+		// *** Hvor mange filmer har denne delstrengen?
+		// int antallFilmerMedDelstrang = 0;
+		// for (int i = 0; i < antall; i++) {
+		// 	if (filmarkiv[i].getTittel().toLowerCase().contains(delstreng.toLowerCase())) {
+		// 		antallFilmerMedDelstrang++;
+		// 	}
+		// }
 
-		//Gammel kode som bare returnerer 1 sammenligning, får ikke til å få den til å returnere flere om det er flere
-		
-//		Film[] temp = new Film[antall];
-//
-//		int teller = 0;
-//
-//		for (int i = 0; i < antall; i++) {
-//			if (filmarkiv[i].getTittel().equalsIgnoreCase(delstreng)) {
-//				temp[teller] = filmarkiv[i];
-//				teller++;
-//			}
-//		}
-//		// Lager da en ny tabell som er akkuratt like stor som antall filmer med samme
-//		// tittel, og bruker telleren som størrelse på tabell
-//		Film[] resultat = new Film[teller];
-//
-//		int index = 0 ;
-//		for (int i = 0; i < resultat.length; i++) {
-//			resultat[index] = temp[i];
-//			index++;
-//		}
-//
-//		return resultat;
+		// *** Legg til filmer med denne delstrengen in en ny tabell
+		// Film[] filmer = new Film[antallFilmerMedDelstrang];
+		// int filmerIndex = 0;
+		// for (int i = 0; i < antall; i++) {
+		// 	if (filmarkiv[i].getTittel().toLowerCase().contains(delstreng.toLowerCase())) {
+		// 		filmer[filmerIndex] = filmarkiv[i];
+		// 		filmerIndex++;
+		// 	}
+		// }
+
+		//return filmer;
 	}
 
 	@Override
