@@ -1,5 +1,8 @@
 package no.hvl.data102.filmarkiv.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import no.hvl.data102.filmarkiv.adt.FilmarkivADT;
 
 public class Filmarkiv implements FilmarkivADT {
@@ -52,81 +55,67 @@ public class Filmarkiv implements FilmarkivADT {
 	@Override
 	public Film[] soekTittel(String delstreng) {
 		
-		// Fått en del hjelp fra chatt for ny kode som fungerer i FilmarkivMain
-		
-	    int antallFunnet = 0;
-	    
-	    // Gå gjennom alle filmer i arkivet og tell hvor mange som matcher
-	    for (Film e : filmarkiv) {
-	        if (e != null && e.getTittel().toLowerCase().contains(delstreng.toLowerCase())) {
-	            antallFunnet++;
-	        }
-	    }
-	    
-	    // Nå lager vi et array for de filmene som faktisk matcher
-	    Film[] funnetFilmer = new Film[antallFunnet];
-	    int index = 0;
-	    
-	    // Gå gjennom filmene en gang til og legg de som samsvarer til arrayet
-	    for (Film e : filmarkiv) {
-	        if (e != null && e.getTittel().toLowerCase().contains(delstreng.toLowerCase())) {
-	            funnetFilmer[index] = e;
-	            index++;
-	        }
-	    }
-	    
-	    return funnetFilmer;
+		int teller = 0;
 
-		//Gammel kode som bare returnerer 1 sammenligning, får ikke til å få den til å returnere flere om det er flere
+		for (int i = 0; i < antall; i++) {
+			if (filmarkiv[i].getTittel().toLowerCase().contains(delstreng.toLowerCase()) ) {
+				teller++;
+			}
+		}
+		// Lager da en ny tabell som er akkuratt like stor som antall filmer med samme tittel
+		// og bruker telleren som størrelse på tabell
+		Film[] resultat = new Film[teller];
+
+		int index = 0 ;
 		
-//		Film[] temp = new Film[antall];
-//
-//		int teller = 0;
-//
-//		for (int i = 0; i < antall; i++) {
-//			if (filmarkiv[i].getTittel().equalsIgnoreCase(delstreng)) {
-//				temp[teller] = filmarkiv[i];
-//				teller++;
-//			}
-//		}
-//		// Lager da en ny tabell som er akkuratt like stor som antall filmer med samme
-//		// tittel, og bruker telleren som størrelse på tabell
-//		Film[] resultat = new Film[teller];
-//
-//		int index = 0 ;
-//		for (int i = 0; i < resultat.length; i++) {
-//			resultat[index] = temp[i];
-//			index++;
-//		}
-//
-//		return resultat;
+		for(int i = 0; i < antall; i++) {
+			if (filmarkiv[i].getTittel().toLowerCase().contains(delstreng.toLowerCase())) {
+				resultat[index] = filmarkiv[i];
+				index++;
+			}
+		}
+
+		return resultat;
 	}
 
 	@Override
 	public Film[] soekProdusent(String delstreng) {
 
-		int teller = 0;
-
-		// teller opp hvor stor tabellen må være for å få plass til alle med samme
-		// produsent
-		for (int i = 0; i < antall; i++) {
+		// Beste løsningen med bruk av dynamisk array, ikke lov?:
+		
+		List<Film> filmer = new ArrayList<>();
+	
+		for(int i = 0; i < antall; i++) {
 			if (filmarkiv[i].getProdusent().equalsIgnoreCase(delstreng)) {
-				teller++;
+				filmer.add(filmarkiv[i]);
 			}
 		}
-		// lager en ny tabell som er akkuratt stor nok til å ta imot alle med samme
-		Film[] sjangerTab = new Film[teller];
-
-		int index = 0;
-
-		// kopierer inn alle objektene med samme produsent i ny tabell
-		for (int i = 0; i < antall; i++) {
-			if (filmarkiv[i].getProdusent().equalsIgnoreCase(delstreng)) {
-				sjangerTab[index] = filmarkiv[i];
-				index++;
-			}
-		}
-		return sjangerTab;
+		 return filmer.toArray(new Film[0]);
+		
+		// ---------------------------------Løsning uten bruk av ArrayList: ---------------------------------
+		 
+//		int teller = 0;
+//
+//		// teller opp hvor stor tabellen må være for å få plass til alle med samme
+//		// produsent
+//		for (int i = 0; i < antall; i++) {
+//			if (filmarkiv[i].getProdusent().equalsIgnoreCase(delstreng)) {
+//				teller++;
+//			}
+//		}
+//		// lager en ny tabell som er akkuratt stor nok til å ta imot alle med samme
+//		Film[] sjangerTab = new Film[teller];
+//
+//		int index = 0;
+//
+//		// kopierer inn alle objektene med samme produsent i ny tabell
+//		for (int i = 0; i < antall; i++) {
+//			if (filmarkiv[i].getProdusent().equalsIgnoreCase(delstreng)) {
+//				sjangerTab[index] = filmarkiv[i];
+//				index++;
+//			}
+//		}
+//		return sjangerTab;
 	}
 
 	@Override

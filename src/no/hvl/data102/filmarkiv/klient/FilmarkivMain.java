@@ -15,24 +15,35 @@ public class FilmarkivMain {
 
 	public static void main(String[] args) {
 		
-		//Chsatt laget kode for å teste skrivUtFilmDelstrengITittel() - Men fungerer ikke...
-		Filmarkiv arkiv = new Filmarkiv(50);  // Anta at du har lagt til filmer i arkivet
+		FilmarkivADT arkivADT = new Filmarkiv(10);
 
-	    // Eksempel på hvordan du legger til filmer i arkivet
-	    arkiv.leggTilFilm(new Film(1, "Produsent1", "Star Wars", 1977, Sjanger.ACTION, "Lucasfilm"));
-	    arkiv.leggTilFilm(new Film(2, "Produsent2", "Star Trek", 1980, Sjanger.EVENTYR, "Paramount"));
-	    arkiv.leggTilFilm(new Film(3, "Produsent3", "Star Wars: Empire Strikes Back", 1980, Sjanger.ACTION, "Lucasfilm"));
+	    arkivADT.leggTilFilm(new Film(1, "Produsent1", "Star Wars", 1977, Sjanger.ACTION, "Lucasfilm"));
+	    arkivADT.leggTilFilm(new Film(2, "Produsent2", "Star Trek", 1980, Sjanger.EVENTYR, "Paramount"));
+	    arkivADT.leggTilFilm(new Film(3, "Produsent3", "Star Wars: Empire Strikes Back", 1980, Sjanger.ACTION, "Lucasfilm"));
 
+	    
+	    System.out.print(arkivADT.finnFilm(1).toString());
+	    
 	    // Lag et Tekstgrensesnitt-objekt
 	    Tekstgrensesnitt tg = new Tekstgrensesnitt();
 
-	    // Be brukeren om en delstreng de vil søke etter i tittelen
-	    Scanner scanner = new Scanner(System.in);
-	    System.out.println("Skriv inn del av tittel du ønsker å søke etter:");
-	    String delstreng = scanner.nextLine();
-
-	    // Kall på metoden skrivUtFilmDelstrengITittel
-	    tg.skrivUtFilmDelstrengITittel(arkiv, delstreng);
+//	    // Be brukeren om en delstreng de vil søke etter i tittelen
+//	    Scanner scanner = new Scanner(System.in);
+//	    System.out.println("Skriv inn del av tittel du ønsker å søke etter:");
+//	    String delstreng = scanner.nextLine();
+//
+//	    // Kall på metoden skrivUtFilmDelstrengITittel
+//	    tg.skrivUtFilmDelstrengITittel(arkiv, delstreng);
+	    
+//	    //Finner film med Filmnr:
+//	    tg.skrivUtFilm(arkiv.finnFilm(3));
+	    
+	    //Finner produsent:
+	   //tg.skrivUtFilmProdusent(arkivADT, "Produsent1");
+	    
+	    
+	   
+	 
 	 
 	    
 
