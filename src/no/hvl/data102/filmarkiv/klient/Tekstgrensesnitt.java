@@ -38,10 +38,6 @@ public class Tekstgrensesnitt {
 			System.out.print("Oppgi filmselskap(String): ");
 			String filmselskap = scanner.nextLine();
 
-			// Måtte ta vekk pga feil i kode for switch setningene - tillatet ikke neste
-			// loop i while løkken hvis scanner ble lukket.
-			// scanner.close();
-
 			return new Film(filmnr, produsent, tittel, lansering, sjanger, filmselskap);
 
 		} catch (IllegalArgumentException e) {
@@ -67,7 +63,7 @@ public class Tekstgrensesnitt {
 		Film[] filmerMedDelstreng = arkiv.soekTittel(delstreng);
 
 		if (filmerMedDelstreng != null && filmerMedDelstreng.length > 0) {
-			System.out.println("Filmer som inneholder \"" + delstreng + "\" i tittelen:");
+			System.out.println("Filmer som inneholder > " + delstreng + " < i tittelen:");
 			for (Film film : filmerMedDelstreng) {
 				if (film != null) {
 					
@@ -96,13 +92,13 @@ public class Tekstgrensesnitt {
 		Film[] filmerMedProdusenter = arkiv.soekProdusent(delstreng);
 
 		if (filmerMedProdusenter != null && filmerMedProdusenter.length > 0) {
-			System.out.println("Filmer som inneholder " + delstreng + " i tittelen:");
+			System.out.println("Filmer som inneholder > " + delstreng + " <  i tittelen:");
 			
 			for(int i = 0; i < filmerMedProdusenter.length; i++) {
 				System.out.print(filmerMedProdusenter[i].toString());
 			}
 		} else {
-			System.out.println("Ingen filmer funnet med " + delstreng + " i tittelen.");
+			System.out.println("Ingen filmer funnet med > " + delstreng + " < i tittelen.");
 		}
 	}
 
@@ -110,6 +106,8 @@ public class Tekstgrensesnitt {
 	// Skriver ut en enkel statistikk som inneholder antall filmer totalt
 	// og hvor mange det er i hver sjanger.
 	public void skrivUtStatistikk(FilmarkivADT arkiv) {
+		
+		
 
 	}
 

@@ -22,10 +22,10 @@ public class FilmarkivMain {
 	    arkivADT.leggTilFilm(new Film(3, "Produsent3", "Star Wars: Empire Strikes Back", 1980, Sjanger.ACTION, "Lucasfilm"));
 
 	    
-	    System.out.print(arkivADT.finnFilm(1).toString());
+	    //System.out.print(arkivADT.finnFilm(1).toString());
 	    
-	    // Lag et Tekstgrensesnitt-objekt
-	    Tekstgrensesnitt tg = new Tekstgrensesnitt();
+	     //Lag et Tekstgrensesnitt-objekt
+	    //Tekstgrensesnitt tg = new Tekstgrensesnitt();
 
 //	    // Be brukeren om en delstreng de vil søke etter i tittelen
 //	    Scanner scanner = new Scanner(System.in);
@@ -52,10 +52,13 @@ public class FilmarkivMain {
 		
 		
 ////************************************************************************************************************************************
+//	    
+//	    // KJØRBART PROGRAM
+//
 //		// Laster opp filmer fra tidligere dokumenr
 //		Filmarkiv arkiv = new Filmarkiv(50);
 //		Film[] filmer = lesInnFraFil(
-//				"/Users/dkron/Documents/GitHub/Oblig1-Filmarkiv/src/no/hvl/data102/filmarkiv/klient/Filmarkiv.txt");
+//				"/Users/dkron/Documents/GitHub/Oblig1-Filmarkiv/Filmarkiv.txt");
 //
 //		for (Film film : filmer) {
 //			if (film != null) {
@@ -96,7 +99,7 @@ public class FilmarkivMain {
 //				break;
 //
 //			case "0":
-//				printFil(arkiv, "/Users/dkron/Documents/GitHub/Oblig1-Filmarkiv/src/no/hvl/data102/filmarkiv/klient/Filmarkiv.txt");
+//				printFil(arkiv, "/Users/dkron/Documents/GitHub/Oblig1-Filmarkiv/Filmarkiv.txt");
 //				avslutt = true;
 //				System.out.println("Lagret og avsluttet :)");
 //				scanner.close();
