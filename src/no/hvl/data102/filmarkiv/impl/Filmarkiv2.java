@@ -40,34 +40,103 @@ public class Filmarkiv2 implements FilmarkivADT {
 	@Override
 	public boolean slettFilm(int filmnr) {
 		
-		LinearNode<Film> sok = start;
-		boolean slettet = false;
+		if(start == null) {							//Sjekker om noden er tom
+			return false;
+		}
+		if(start.data.getFilmnr() == filmnr) {		//Hvis noden bare har 1 element, sjekker den om det er lik filmnr og sletter
+			start = start.neste;
+			antall--;
+			return true;
+		}
 		
-		while (sok != null) {
-            if (sok.data.getFilmnr() == filmnr) {
-                
+		LinearNode<Film> forrige = start;
+		LinearNode<Film> aktuell = start.neste;
+		
+ 		boolean slettet = false;
+		
+		while (aktuell != null) {						//Går igjennom node-linken og sjekker hver node for filmnr
+            if (aktuell.data.getFilmnr() == filmnr) {
+                forrige.neste = aktuell.neste;
+                antall--;
+                return true;
             }
-            sok = sok.neste;
+            forrige = aktuell;
+            aktuell = aktuell.neste;
         }
 		return slettet;
 	}
 
 	@Override
 	public Film[] soekTittel(String delstreng) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Film[] funnetTab = new Film[antall];
+		int index = 0;
+		
+		LinearNode<Film> sok = start;
+		
+		while(sok != null) {
+			if(sok.data.getTittel().toLowerCase().contains(delstreng.toLowerCase())) {
+				funnetTab[index] = sok.data;
+				index++;
+			} sok = sok.neste;
+		}
+		
+		//Reduserer funnetTab sin nullpekere
+		Film[] trimmet = new Film[index];
+		
+		for(int i = 0; i < trimmet.length; i++) {
+			trimmet[i] = funnetTab[i];
+		}
+		
+		return trimmet;
 	}
 
 	@Override
 	public Film[] soekProdusent(String delstreng) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Film[] funnetTab = new Film[antall];
+		int index = 0;
+		
+		LinearNode<Film> sok = start;
+		
+		while(sok != null) {
+			if(sok.data.getProdusent().toLowerCase().contains(delstreng.toLowerCase())) {
+				funnetTab[index] = sok.data;
+				index++;
+			} sok = sok.neste;
+		}
+		
+		//Reduserer funnetTab sin nullpekere
+		Film[] trimmet = new Film[index];
+		
+		for(int i = 0; i < trimmet.length; i++) {
+			trimmet[i] = funnetTab[i];
+		}
+		
+		return trimmet;
 	}
 
 	@Override
 	public int antallSjanger(Sjanger sjanger) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+//		if(start == null) {							//Sjekker om noden er tom
+//			return 0;
+//		}
+		if(start.data.getSjanger() == sjanger) {		//Hvis noden bare har 1 element, sjekker den om det er lik filmnr og sletter
+			return 1;
+		}
+		
+		int teller = 0;
+		
+		LinearNode<Film> sok = start;
+		
+		while(sok != null) {
+			if(sok.data.getSjanger().equals(sjanger)) {
+				teller++;
+			}	
+		}
+
+		return teller;
 	}
 
 	@Override
