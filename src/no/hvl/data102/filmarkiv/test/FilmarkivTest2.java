@@ -84,7 +84,9 @@ public class FilmarkivTest2 {
 		t1.leggTilFilm(new Film(2, "Michael Bay", "Transformers", 2020, Sjanger.ACTION, "WB"));
 		t1.leggTilFilm(new Film(3, "Produsent B", "Harry Potter", 2022, Sjanger.EVENTYR, "SF-Film"));
 
+		assertEquals(2, t1.antallSjanger(Sjanger.ACTION));
 		assertEquals(1, t1.antallSjanger(Sjanger.EVENTYR));
+		
 	}
 
 	

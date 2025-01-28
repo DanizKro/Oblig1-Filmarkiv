@@ -4,7 +4,7 @@ import no.hvl.data102.filmarkiv.adt.FilmarkivADT;
 
 public class Filmarkiv2 implements FilmarkivADT {
 	
-	private int antall;
+	private int antall =0;
 	private LinearNode<Film> start;
 	
 	public Filmarkiv2() {
@@ -29,8 +29,7 @@ public class Filmarkiv2 implements FilmarkivADT {
 
 	@Override
 	public void leggTilFilm(Film nyFilm) {
-		LinearNode<Film> nyNode = new LinearNode<>();
-		nyNode.data = nyFilm;							//Legger til Film objekt i dataen til nye noden
+		LinearNode<Film> nyNode = new LinearNode<>(nyFilm);
 		nyNode.neste = start;							//Får den nye noden sin neste peker til å peke på første node i linjen (slik at nye noden kommer først i rekken)
 		start = nyNode;									//Setter den nye starten til å være den nye noden som er lagt til
 		antall++;
@@ -119,9 +118,9 @@ public class Filmarkiv2 implements FilmarkivADT {
 	@Override
 	public int antallSjanger(Sjanger sjanger) {
 		
-//		if(start == null) {							//Sjekker om noden er tom
-//			return 0;
-//		}
+		if(start == null) {							//Sjekker om noden er tom
+			return 0;
+		}
 		if(start.data.getSjanger() == sjanger) {		//Hvis noden bare har 1 element, sjekker den om det er lik filmnr og sletter
 			return 1;
 		}
@@ -134,6 +133,7 @@ public class Filmarkiv2 implements FilmarkivADT {
 			if(sok.data.getSjanger().equals(sjanger)) {
 				teller++;
 			}	
+			sok = sok.neste;
 		}
 
 		return teller;
@@ -141,8 +141,8 @@ public class Filmarkiv2 implements FilmarkivADT {
 
 	@Override
 	public int getAntall() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return antall;
 	}
 
 	@Override
